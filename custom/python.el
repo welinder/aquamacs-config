@@ -26,6 +26,12 @@
     (insert-pair)))
 
 ;;; IPython Integration
+;; nicer access to command history (must be defined before ipython)
+;; (require 'comint)
+;; (define-key comint-mode-map (kbd "M-p") 'comint-previous-matching-input-from-input)
+;; (define-key comint-mode-map (kbd "M-n") 'comint-next-matching-input-from-input)
+;; (define-key comint-mode-map (kbd "C-M-p") 'comint-next-input)
+;; (define-key comint-mode-map (kbd "C-M-p") 'comint-previous-input)
 ; More about getting EDITOR to work here:http://ipython.scipy.org/doc/manual/html/config/editors.html
 (setq ipython-command 
   "/Library/Frameworks/EPD64.framework/Versions/Current/bin/ipython")
@@ -35,13 +41,26 @@
 (defadvice py-execute-buffer (around python-keep-focus activate)
   "return focus to python code buffer"
   (save-excursion ad-do-it))
-;; nicer access to command history
-(require 'comint)
-(define-key comint-mode-map (kbd "M-p") 'comint-previous-matching-input-from-input)
-(define-key comint-mode-map (kbd "M-n") 'comint-next-matching-input-from-input)
-(define-key comint-mode-map (kbd "C-M-p") 'comint-next-input)
-(define-key comint-mode-map (kbd "C-M-p") 'comint-previous-input)
-
+;; make up and down arrows work in the interpreter buffer
+(add-hook 'py-shell-hook
+          (lambda ()
+            (local-set-key (kbd "<up>") 'comint-previous-matching-input-from-input)
+            (local-set-key (kbd "<down>") 'comint-next-matching-input-from-input)))
+;; anything-ipython for better completion
+(require 'anything)
+(require 'anything-ipython)
+(add-hook 'python-mode-hook #'(lambda ()
+  (define-key python-mode-map (kbd "M-<tab>") 'anything-ipython-complete)))
+(add-hook 'ipython-shell-hook #'(lambda ()
+  (define-key python-mode-map (kbd "M-<tab>") 'anything-ipython-complete)))
+;; rlcompleter2 is a nice completer: http://codespeak.net/rlcompleter2/
+;; to get it to work, do `easy_install rlcompleter2` then add the following
+;; to your `~/.ipython/ipy_user_conf.py`
+;;   import rlcompleter2
+;;   rlcompleter2.setup()
+(when (require 'anything-show-completion nil t)
+  (use-anything-show-completion 'anything-ipython-complete
+                                '(length pattern)))
 
 ;;; Pymacs python integration
 ;; Read more here: http://pymacs.progiciels-bpi.ca/pymacs.html
