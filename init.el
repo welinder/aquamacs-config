@@ -27,6 +27,7 @@
 		     "keybindings"
 		     "yasnippet"
          "ido"
-         "python"))
+         "python"
+         "multi-term"))
 
 (provide 'init)

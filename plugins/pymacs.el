@@ -172,48 +172,59 @@ equivalents, other structures are converted into Lisp handles."
 
 ;;; Integration details.
 
-;; Python functions and modules should ideally look like Lisp functions and
-;; modules.  This page tries to increase the integration seamlessness.
+;; This page tries to increase the integration seamlessness of Pymacs
+;; with the reminder of Emacs.
 
-(defadvice documentation (around pymacs-ad-documentation activate)
-  ;; Integration of doc-strings.
-  (let* ((reference (pymacs-python-reference function))
-         (python-doc (when reference
-                       (pymacs-eval (format "doc_string(%s)" reference)))))
-    (if (or reference python-doc)
-        (setq ad-return-value
-              (concat
-               "It interfaces to a Python function.\n\n"
-               (when python-doc
-                 (if raw python-doc (substitute-command-keys python-doc)))))
-      ad-do-it)))
+;; Module "desktop" savagely kills `*Pymacs*' in some circumstances.
+;; Let's avoid such damage.
 
-(defun pymacs-python-reference (object)
-  ;; Return the text reference of a Python object if possible, else nil.
-  (when (functionp object)
-    (let* ((definition (indirect-function object))
-           (body (and (pymacs-proper-list-p definition)
-                      (> (length definition) 2)
-                      (eq (car definition) 'lambda)
-                      (cddr definition))))
-      (when (and body (listp (car body)) (eq (caar body) 'interactive))
-        ;; Skip the interactive specification of a function.
-        (setq body (cdr body)))
-      (when (and body
-                 ;; Advised functions start with a string.
-                 (not (stringp (car body)))
-                 ;; Python trampolines hold exactly one expression.
-                 (= (length body) 1))
-        (let ((expression (car body)))
-          ;; EXPRESSION might now hold something like:
-          ;;    (pymacs-apply (quote (pymacs-python . N)) ARGUMENT-LIST)
-          (when (and (pymacs-proper-list-p expression)
-                     (= (length expression) 3)
-                     (eq (car expression) 'pymacs-apply)
-                     (eq (car (cadr expression)) 'quote))
-            (setq object (cadr (cadr expression))))))))
-  (when (eq (car-safe object) 'pymacs-python)
-    (format "python[%d]" (cdr object))))
+(eval-after-load 'desktop
+  '(push "\\*Pymacs\\*" desktop-clear-preserve-buffers))
+
+;; Python functions and modules should ideally look like Lisp
+;; functions and modules.
+
+(when t
+
+  (defadvice documentation (around pymacs-ad-documentation activate)
+    ;; Integration of doc-strings.
+    (let* ((reference (pymacs-python-reference function))
+           (python-doc (when reference
+                         (pymacs-eval (format "doc_string(%s)" reference)))))
+      (if (or reference python-doc)
+          (setq ad-return-value
+                (concat
+                 "It interfaces to a Python function.\n\n"
+                 (when python-doc
+                   (if raw python-doc (substitute-command-keys python-doc)))))
+        ad-do-it)))
+
+  (defun pymacs-python-reference (object)
+    ;; Return the text reference of a Python object if possible, else nil.
+    (when (functionp object)
+      (let* ((definition (indirect-function object))
+             (body (and (pymacs-proper-list-p definition)
+                        (> (length definition) 2)
+                        (eq (car definition) 'lambda)
+                        (cddr definition))))
+        (when (and body (listp (car body)) (eq (caar body) 'interactive))
+          ;; Skip the interactive specification of a function.
+          (setq body (cdr body)))
+        (when (and body
+                   ;; Advised functions start with a string.
+                   (not (stringp (car body)))
+                   ;; Python trampolines hold exactly one expression.
+                   (= (length body) 1))
+          (let ((expression (car body)))
+            ;; EXPRESSION might now hold something like:
+            ;;    (pymacs-apply (quote (pymacs-python . N)) ARGUMENT-LIST)
+            (when (and (pymacs-proper-list-p expression)
+                       (= (length expression) 3)
+                       (eq (car expression) 'pymacs-apply)
+                       (eq (car (cadr expression)) 'quote))
+              (setq object (cadr (cadr expression))))))))
+    (when (eq (car-safe object) 'pymacs-python)
+      (format "python[%d]" (cdr object)))))
 
 ;; The following functions are experimental -- they are not satisfactory yet.
 
@@ -562,9 +573,9 @@ The timer is used only if `post-gc-hook' is not available.")
           (if (and (pymacs-proper-list-p reply)
                    (= (length reply) 2)
                    (eq (car reply) 'version))
-              (unless (string-equal (cadr reply) "0.24-beta1")
+              (unless (string-equal (cadr reply) "0.24-beta2")
                 (pymacs-report-error
-                 "Pymacs Lisp version is 0.24-beta1, Python is %s"
+                 "Pymacs Lisp version is 0.24-beta2, Python is %s"
                  (cadr reply)))
             (pymacs-report-error "Pymacs got an invalid initial reply")))))
     (if (not pymacs-use-hash-tables)

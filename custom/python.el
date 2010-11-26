@@ -58,9 +58,9 @@
 ;; to your `~/.ipython/ipy_user_conf.py`
 ;;   import rlcompleter2
 ;;   rlcompleter2.setup()
-(when (require 'anything-show-completion nil t)
-  (use-anything-show-completion 'anything-ipython-complete
-                                '(length pattern)))
+;; (when (require 'anything-show-completion nil t)
+;;   (use-anything-show-completion 'anything-ipython-complete
+;;                                 '(length pattern)))
 
 ;;; Pymacs python integration
 ;; Read more here: http://pymacs.progiciels-bpi.ca/pymacs.html
