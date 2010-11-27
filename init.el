@@ -28,6 +28,7 @@
 		     "yasnippet"
          "ido"
          "python"
+         "ecb"
          "multi-term"))
 
 (provide 'init)

@@ -55,3 +55,13 @@
 ;;; Enable fullscreen mode with M-RET
 ;;; http://www.stratospark.com/blog/2010/fullscreen_emacs_on_osx.html
 (global-set-key (kbd "M-RET") 'aquamacs-toggle-full-frame)
+
+;;; EFFECTIVE EMACS
+;;; http://web.archive.org/web/20060903005117/http://www.cabochon.com/~stevey/blog-rants/effective-emacs.html
+;; replace M-x
+(global-set-key "\C-x\C-m" 'execute-extended-command)
+(global-set-key "\C-c\C-m" 'execute-extended-command) ;fix mistakes
+;; kill word
+(global-set-key "\C-w"     'backward-kill-word)
+(global-set-key "\C-x\C-k" 'kill-region)
+(global-set-key "\C-c\C-k" 'kill-region)
