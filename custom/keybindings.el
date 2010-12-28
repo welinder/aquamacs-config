@@ -56,11 +56,20 @@
 ;;; http://www.stratospark.com/blog/2010/fullscreen_emacs_on_osx.html
 (global-set-key (kbd "M-RET") 'aquamacs-toggle-full-frame)
 
+;; Smex makes M-x commands sooo much easier to access:
+;; https://github.com/nonsequitur/smex/
+(require 'smex)
+(smex-initialize)
+;; set up new M-x key bindings 
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "C-x C-m") 'smex) ; more efficient
+;(global-set-key "\C-x\C-M" 'smex-major-mode-commands) ;buggy - replaces previous cmd. ..?
+;; old M-x.
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+
+
 ;;; EFFECTIVE EMACS
 ;;; http://web.archive.org/web/20060903005117/http://www.cabochon.com/~stevey/blog-rants/effective-emacs.html
-;; replace M-x
-(global-set-key "\C-x\C-m" 'execute-extended-command)
-(global-set-key "\C-c\C-m" 'execute-extended-command) ;fix mistakes
 ;; kill word
 (global-set-key "\C-w"     'backward-kill-word)
 (global-set-key "\C-x\C-k" 'kill-region)
