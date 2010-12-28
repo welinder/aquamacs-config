@@ -2,7 +2,7 @@
 ;;; (some basic settings in init.el for speedy evaluation)
 
 ;; fonts
-(set-default-font "Inconsolata-16")
+(set-default-font "Inconsolata-12")
 
 ;; cursor line
 ;(global-hl-line-mode 1)
@@ -24,3 +24,11 @@
 
 ;; make side by side buffers function the same as the main window
 (setq truncate-partial-width-windows nil)
+
+;; theme
+(add-to-list 'load-path (concat config-root-dir "/plugins/themes"))
+(eval-after-load "color-theme" '(progn (color-theme-wombat)))
+
+;; highlight current line
+(global-hl-line-mode 1)
+; (set-face-background 'hl-line "#330")
