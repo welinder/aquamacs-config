@@ -3,6 +3,13 @@
 (add-to-list 'load-path (concat config-root-dir "/plugins/eproject"))
 (require 'eproject)
 (require 'eproject-extras)
+(require 'ido)
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
+(setq ido-use-filename-at-point 'guess)
+(ido-mode 1)
+
+
 (require 'anything-config)
 (require 'anything-match-plugin)
 
