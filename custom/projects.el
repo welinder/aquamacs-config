@@ -6,6 +6,13 @@
 (add-to-list 'load-path (concat config-root-dir "/plugins/eproject"))
 (require 'eproject)
 (require 'eproject-extras)
+;; eproject global bindings
+;; See last part of following page to make these act on other projects:
+;; https://github.com/jrockway/eproject/wiki/InstallingEproject
+(global-set-key (kbd "C-x p k") 'eproject-kill-project-buffers)
+(global-set-key (kbd "C-x p v") 'eproject-revisit-project)
+(global-set-key (kbd "C-x p b") 'eproject-ibuffer)
+(global-set-key (kbd "C-x p f") 'eproject-find-file)
 
 
 ;;;-------------------------------------------------------------------------
