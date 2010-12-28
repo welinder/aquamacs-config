@@ -29,6 +29,8 @@
          "ido"
          "python"
          "ecb"
-         "multi-term"))
+         "multi-term"
+         "version-control"
+         "projects"))
 
 (provide 'init)

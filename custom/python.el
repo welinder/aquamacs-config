@@ -47,12 +47,15 @@
             (local-set-key (kbd "<up>") 'comint-previous-matching-input-from-input)
             (local-set-key (kbd "<down>") 'comint-next-matching-input-from-input)))
 ;; anything-ipython for better completion
-(require 'anything)
-(require 'anything-ipython)
-(add-hook 'python-mode-hook #'(lambda ()
-  (define-key python-mode-map (kbd "M-<tab>") 'anything-ipython-complete)))
-(add-hook 'ipython-shell-hook #'(lambda ()
-  (define-key python-mode-map (kbd "M-<tab>") 'anything-ipython-complete)))
+
+; TODO: anything has moved to projects.el
+;(require 'anything)
+;(require 'anything-ipython)
+;(add-hook 'python-mode-hook #'(lambda ()
+;  (define-key python-mode-map (kbd "M-<tab>") 'anything-ipython-complete)))
+;(add-hook 'ipython-shell-hook #'(lambda ()
+;  (define-key python-mode-map (kbd "M-<tab>") 'anything-ipython-complete)))
+  
 ;; rlcompleter2 is a nice completer: http://codespeak.net/rlcompleter2/
 ;; to get it to work, do `easy_install rlcompleter2` then add the following
 ;; to your `~/.ipython/ipy_user_conf.py`
@@ -70,8 +73,13 @@
 ;; 3. Do `make install`
 ;; 4. See that it works by doing `from Pymacs import lisp` from python shell.
 ;; 5. Place `pymacs.el` in the `plugins/` directory.
-;; 6. For speed, byte compile the file: `M-x byte-compile-file RET pymacs.el RET`
-;; 7. You should now be able to run `M-x pymacs-eval`
+;; 6. For speed, byte compile the file: 
+;;      `M-x byte-compile-file RET pymacs.el RET`
+;; 7. Make sure the correct python shows up if you do:
+;;      `M-x shell-command RET which python`
+;;    If it doesn't, you may have to set your `PATH` correctly for 
+;;    non-terminal shells (`.bashrc` or `.zshenv` depending on shell).
+;; 8. You should now be able to run `M-x pymacs-eval`
 
 (autoload 'pymacs-apply "pymacs")
 (autoload 'pymacs-call "pymacs")
