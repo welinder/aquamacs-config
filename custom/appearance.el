@@ -26,9 +26,9 @@
 (setq truncate-partial-width-windows nil)
 
 ;; theme
-(add-to-list 'load-path (concat config-root-dir "/plugins/themes"))
-;(require 'color-theme-wombat)
-;(eval-after-load "color-theme" '(progn (color-theme-wombat)))
+(add-to-list 'load-path (concat config-root-dir "/themes"))
+(require 'color-theme-wombat)
+(color-theme-wombat) ; select the theme
 
 ;; highlight current line
 (global-hl-line-mode 1)

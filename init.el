@@ -23,15 +23,17 @@
     (message "Loaded custom config file: %s" file)
   ))
 
-(load-config-files '("custom"
-		     "appearance"
-		     "keybindings"
-		     "yasnippet"
-         "ido"
-         "ecb"
-         "multi-term"
-         "version-control"
-         "projects"))
+(load-config-files '(
+  "custom"
+  "keybindings"
+  "yasnippet"
+  "ido"
+  "ecb"
+  "multi-term"
+  "version-control"
+  "projects"
+  "appearance" ; appearance least important, so load last
+))
 
 ;; since ropemacs etc is slow, wait with this until we load a python file
 (add-to-list 'load-path custom-config-dir)

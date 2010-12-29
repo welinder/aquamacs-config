@@ -1,5 +1,4 @@
-(eval-when-compile
-  (require 'color-theme))
+(require 'color-theme)
 (defun color-theme-wombat ()
   "Color theme by Lars Nielsen, Emacsified by Peter Severin and Scott Jaderholm."
   (interactive)
@@ -342,4 +341,5 @@
      (woman-italic ((t (:italic t :underline t :slant italic))))
      (woman-symbol ((t (nil))))
      (woman-unknown ((t (:foreground "cyan1")))))))
-(add-to-list 'color-themes '(color-theme-wombat  "Wombat" "Lars Nielsen"))
+;(add-to-list 'color-themes '(color-theme-wombat  "Wombat" "Lars Nielsen"))
+(provide 'color-theme-wombat)
