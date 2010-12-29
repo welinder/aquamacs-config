@@ -74,3 +74,7 @@
 (global-set-key "\C-w"     'backward-kill-word)
 (global-set-key "\C-x\C-k" 'kill-region)
 (global-set-key "\C-c\C-k" 'kill-region)
+
+;; ALT key is really hard to get at, so replace it with command key
+(define-key osx-key-mode-map (kbd "A-f") 'forward-word)
+(define-key osx-key-mode-map (kbd "A-b") 'backward-word)
