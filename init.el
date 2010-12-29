@@ -28,10 +28,13 @@
 		     "keybindings"
 		     "yasnippet"
          "ido"
-         "python"
          "ecb"
          "multi-term"
          "version-control"
          "projects"))
+
+;; since ropemacs etc is slow, wait with this until we load a python file
+(add-to-list 'load-path custom-config-dir)
+(autoload 'python-mode "python-env" "Python Environment" t)
 
 (provide 'init)

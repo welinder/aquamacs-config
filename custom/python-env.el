@@ -1,6 +1,5 @@
-
 ;;; python-mode
-(autoload 'python-mode "python-mode" "Python Mode." t)
+(require 'python)
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
 (add-to-list 'interpreter-mode-alist '("python" . python-mode))
 (require 'python-mode)
@@ -94,7 +93,7 @@
 ;;; Ropemacs
 ;; Installation: Run `python setup.py install` from the archive in src/
 (pymacs-load "ropemacs" "rope-")
-(setq ropemacs-enable-autoimport t)
+;(setq ropemacs-enable-autoimport t) ; far too slow
 
 ;;; Syntax Check using Flymake to use PyFlakes.
 ;; http://plope.com/Members/chrism/flymake-mode
@@ -118,5 +117,5 @@
 (add-to-list 'ac-dictionary-directories (concat auto-complete-dir "dict/"))
 (require 'auto-complete-config)
 (ac-config-default)
-; (global-auto-complete-mode t) ; waaay too slow
+(global-auto-complete-mode t)
 
