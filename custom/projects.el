@@ -30,6 +30,10 @@
 (require 'anything-config)
 (require 'anything-match-plugin)
 ;; source: find file in eproject
+(defun eproject-list-project-files-map ()
+  "Returns a list of project files relative to the project root and their full filenames"
+  (mapcar #'eproject--shorten-filename (eproject-list-project-files)))
+;; TODO: make filenames relative to project root work
 (defvar anything-c-source-eproject-files
   '((name . "Files in eProject")
     (init . (lambda () (if (buffer-file-name)
@@ -38,8 +42,8 @@
 	  )))
     (candidates . (lambda () (if anything-eproject-root-dir
       (eproject-list-project-files anything-eproject-root-dir))))
-      (type . file)
-  )
+ ;     (eproject-list-project-files-map))))
+    (type . file))
   "Search for files in the current eProject.")
 (defun anything-for-files ()
   "Preconfigured `anything' for opening buffers. Searches for buffers in the current project, then other buffers, also gives option of recentf. Replaces switch-to-buffer."
