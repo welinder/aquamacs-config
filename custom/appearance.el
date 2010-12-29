@@ -27,6 +27,7 @@
 
 ;; theme
 (add-to-list 'load-path (concat config-root-dir "/plugins/themes"))
+(require 'color-theme-wombat)
 (eval-after-load "color-theme" '(progn (color-theme-wombat)))
 
 ;; highlight current line
