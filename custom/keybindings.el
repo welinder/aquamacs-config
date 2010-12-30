@@ -78,3 +78,6 @@
 ;; ALT key is really hard to get at, so replace it with command key
 (define-key osx-key-mode-map (kbd "A-f") 'forward-word)
 (define-key osx-key-mode-map (kbd "A-b") 'backward-word)
+
+;; custom bindings
+(global-set-key (kbd "C-x l") 'linum-mode)

@@ -19,7 +19,7 @@
 (setq frame-title-format '(buffer-file-name "%f" ("%b")))
  
 ;; line numbers
-(global-linum-mode 1)
+;(global-linum-mode 1) ; added "C-x l" keybinding instead
 (setq column-number-mode  t)
 
 ;; make side by side buffers function the same as the main window

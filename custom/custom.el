@@ -10,14 +10,22 @@
 ;; use UTF-8
 (prefer-coding-system 'utf-8)
 
-; Lines shouldn't be longer than 79 chars
-(setq fill-column 72)
+; Lines shouldn't be longer than 76 chars
+(setq fill-column 76)
 
 ;; remove the beeping, it drives me nuts
 (setq ring-bell-function 'ignore)
 
 ;; get rid of yes-or-no questions - y or n is enough
 (defalias 'yes-or-no-p 'y-or-n-p)
+
+;; indent whole buffer: http://emacsblog.org/2007/01/17/indent-whole-buffer/
+(defun indent-whole-buffer ()
+  "indent whole buffer"
+  (interactive)
+  (delete-trailing-whitespace)
+  (indent-region (point-min) (point-max) nil)
+  (untabify (point-min) (point-max)))
 
 ;; search for word under pointer
 (defun my-isearch-word-at-point ()

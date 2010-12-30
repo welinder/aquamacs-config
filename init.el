@@ -32,6 +32,7 @@
   "multi-term"
   "version-control"
   "projects"
+  "markdown-env"
   "appearance" ; appearance least important, so load last
 ))
 
