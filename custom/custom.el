@@ -49,3 +49,8 @@
             isearch-yank-flag t)
       (isearch-search-and-update))))
 (add-hook 'isearch-mode-hook 'my-isearch-yank-word-hook)
+
+;; undo-tree
+(require 'undo-tree)
+
+(provide 'custom)
