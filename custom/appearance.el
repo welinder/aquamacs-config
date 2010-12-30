@@ -33,3 +33,7 @@
 ;; highlight current line
 (global-hl-line-mode 1)
 ; (set-face-background 'hl-line "#330")
+
+;; darkroom-mode
+(add-to-list 'load-path (concat config-root-dir "/plugins/darkroom-mode"))
+(require 'darkroom-mode)
