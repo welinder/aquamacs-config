@@ -30,26 +30,16 @@
 (require 'anything-config)
 (require 'anything-match-plugin)
 ;; source: find file in eproject
-(defun eproject-list-project-files-map ()
-  "Returns a list of project files relative to the project root and their full filenames"
-  (mapcar #'eproject--shorten-filename (eproject-list-project-files)))
-;; TODO: make filenames relative to project root work
 (defvar anything-c-source-eproject-files
   '((name . "Files in eProject")
-    (init . (lambda () (if (buffer-file-name)
-		  (setq anything-eproject-root-dir (eproject-maybe-turn-on))
-			(setq anything-eproject-root-dir 'nil)
-	  )))
-    (candidates . (lambda () (if anything-eproject-root-dir
-      (eproject-list-project-files anything-eproject-root-dir))))
- ;     (eproject-list-project-files-map))))
+    (init . (lambda ()
+		  (setq anything-eproject-file-map 
+            (mapcar #'eproject--shorten-filename (eproject-list-project-files)))
+	  ))
+    (candidates . anything-eproject-file-map)
     (type . file))
-  "Search for files in the current eProject.")
-(defun anything-for-files ()
-  "Preconfigured `anything' for opening buffers. Searches for buffers in the current project, then other buffers, also gives option of recentf. Replaces switch-to-buffer."
-  (interactive)
-  (anything '(anything-c-source-eproject-files
-              anything-c-source-recentf)))
+  "Search for files in this project.")
+
 ;; source: find file in ebuffer
 (defvar anything-c-source-eproject-buffers
   '((name . "Buffers in this eProject")
@@ -58,11 +48,18 @@
       (setq anything-eproject-root-dir 'nil))))
     (candidates . (lambda () (if anything-eproject-root-dir
       (mapcar 'buffer-name  (cdr 
-        (assoc anything-eproject-root-dir (eproject—project-buffers)))))))
+        (assoc anything-eproject-root-dir (eproject--project-buffers)))))))
     (volatile)
     (type . buffer)
     )
   "Search for buffers in this project.")
+
+(defun anything-for-files ()
+  "Preconfigured `anything' for opening buffers. Searches for buffers in the current project, then other buffers, also gives option of recentf. Replaces switch-to-buffer."
+  (interactive)
+  (anything '(anything-c-source-eproject-buffers
+              anything-c-source-eproject-files
+              )))
 (defun anything-for-buffers ()
   "Preconfigured `anything' for opening buffers. Searches for buffers in the current project, then other buffers, also gives option of recentf. Replaces switch-to-buffer."
   (interactive)

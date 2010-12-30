@@ -109,13 +109,3 @@
   (add-to-list 'flymake-allowed-file-name-masks 
                '("\\.py\\'" flymake-pyflakes-init))) 
 (add-hook 'find-file-hook 'flymake-find-file-hook)
-
-;;; auto-complete
-(setq auto-complete-dir (concat config-root-dir "plugins/auto-complete-1.3.1/"))
-(add-to-list 'load-path auto-complete-dir)
-(setq ac-dictionary-directories ())
-(add-to-list 'ac-dictionary-directories (concat auto-complete-dir "dict/"))
-(require 'auto-complete-config)
-(ac-config-default)
-(global-auto-complete-mode t)
-

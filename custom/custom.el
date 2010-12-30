@@ -53,4 +53,14 @@
 ;; undo-tree
 (require 'undo-tree)
 
+
+;;; auto-complete
+(setq auto-complete-dir (concat config-root-dir "plugins/auto-complete-1.3.1/"))
+(add-to-list 'load-path auto-complete-dir)
+(setq ac-dictionary-directories ())
+(add-to-list 'ac-dictionary-directories (concat auto-complete-dir "dict/"))
+(require 'auto-complete-config)
+(ac-config-default)
+(global-auto-complete-mode t)
+
 (provide 'custom)
