@@ -33,6 +33,7 @@
   "version-control"
   "projects"
   "markdown-env"
+  "lisp-env"
   "appearance" ; appearance least important, so load last
 ))
 
