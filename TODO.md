@@ -12,6 +12,9 @@ Python development environment:
     [this guide](http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/)
   - [ansi-term hints](http://www.emacswiki.org/emacs/AnsiTermHints)
   -
+    http://emacs-fu.blogspot.com/2010/06/console-apps-in-emacs-with-multi-term.html
+    
+  -
     [proper color escape seq](http://www.eterm.org/docs/view.php?doc=ref#escape)
 - dump region into buffer (e.g. ipython)
 - switch current projects
