@@ -34,6 +34,7 @@
   "projects"
   "markdown-env"
   "lisp-env"
+  "org-mode-env"
   "appearance" ; appearance least important, so load last
 ))
 
