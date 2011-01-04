@@ -35,11 +35,13 @@
   "markdown-env"
   "lisp-env"
   "org-mode-env"
+  "python-env"
   "appearance" ; appearance least important, so load last
 ))
 
 ;; since ropemacs etc is slow, wait with this until we load a python file
-(add-to-list 'load-path custom-config-dir)
-(autoload 'python-mode "python-env" "Python Environment" t)
+;(add-to-list 'load-path custom-config-dir)
+;(autoload 'python-mode "python-env" "Python Environment" t)
+
 
 (provide 'init)

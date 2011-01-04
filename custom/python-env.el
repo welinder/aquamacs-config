@@ -1,4 +1,7 @@
 ;;; python-mode
+;; See installation instructions below
+;; 1. Install Pymacs
+;; 2. Install ropemacs
 (require 'python)
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
 (add-to-list 'interpreter-mode-alist '("python" . python-mode))
@@ -19,6 +22,7 @@
             ;; (define-key python-mode-map "[" 'electric-pair)
             ;; (define-key python-mode-map "{" 'electric-pair)
             ))
+
 (defun electric-pair ()
   "Insert character pair without surrounding spaces"
   (interactive)
@@ -79,7 +83,7 @@
 ;;      `M-x shell-command RET which python`
 ;;    If it doesn't, you may have to set your `PATH` correctly for 
 ;;    non-terminal shells (`.bashrc` or `.zshenv` depending on shell).
-;; 8. You should now be able to run `M-x pymacs-eval`
+;; 8. Make sure pymacs works from emacs: e.g. `M-x pymacs-eval 2**3` should give you 8.
 
 (autoload 'pymacs-apply "pymacs")
 (autoload 'pymacs-call "pymacs")
@@ -92,7 +96,9 @@
 (require 'pymacs)
 
 ;;; Ropemacs
-;; Installation: Run `python setup.py install` from the archive in src/
+;; Installation: 
+;; 1. Install rope: `pip install rope`
+;; 2. Run `python setup.py install` from the archive in src/
 (pymacs-load "ropemacs" "rope-")
 ;(setq ropemacs-enable-autoimport t) ; far too slow
 

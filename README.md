@@ -23,3 +23,7 @@ all `*.el` files in the directory.
         git submodule init
         git submodule update
 
+5. Install SLIME by using package on Aquamacs website
+6. (optional) Install aquamacs command line tools: `Tools -> Install
+Command Line Tools`.
+
