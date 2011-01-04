@@ -16,4 +16,10 @@ This is my Aquamacs Emacs configuration. Pieces are stolen and modified from all
 
 2. Make sure your Python configuration works by checking instructions in `custom/python.el`.
 3. Set up your CEDET environment by extracting `cedet-1.0.tar.gz` and `ecb-2.40.tar.gz` from `src/` in the `plugins/` directory and follow the CEDET build instructions in `custom/ecb.el`.
-3. Byte-compile `auto-complete` in plugins.
+3. Extract `auto-complete-*.tar.gz` into `plugins/` and byte-compile
+all `*.el` files in the directory.
+4. Install `eproject` using
+
+        git submodule init
+        git submodule update
+
