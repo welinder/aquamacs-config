@@ -12,11 +12,12 @@
             ;(define-key py-mode-map [tab] 'yas/expand)
             ;(setq yas/after-exit-snippet-hook 'indent-according-to-mode)
 	          ;(smart-operator-mode-on)
-            (define-key python-mode-map "\"" 'electric-pair)
-            (define-key python-mode-map "\'" 'electric-pair)
-            (define-key python-mode-map "(" 'electric-pair)
-            (define-key python-mode-map "[" 'electric-pair)
-            (define-key python-mode-map "{" 'electric-pair)
+            ;; electric pairs interfers with auto-pair, so turn off.
+            ;; (define-key python-mode-map "\"" 'electric-pair)
+            ;; (define-key python-mode-map "\'" 'electric-pair)
+            ;; (define-key python-mode-map "(" 'electric-pair)
+            ;; (define-key python-mode-map "[" 'electric-pair)
+            ;; (define-key python-mode-map "{" 'electric-pair)
             ))
 (defun electric-pair ()
   "Insert character pair without surrounding spaces"

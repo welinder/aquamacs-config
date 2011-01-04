@@ -47,10 +47,10 @@
 (global-set-key (kbd "M-H") (lambda () (interactive) (enlarge-window -1 t)))
 (global-set-key (kbd "M-L") (lambda () (interactive) (enlarge-window 1 t)))
 
-(global-set-key (kbd "<M-down>") 'windmove-down)
-(global-set-key (kbd "<M-up>") 'windmove-up)
-(global-set-key (kbd "<M-left>") 'windmove-left)
-(global-set-key (kbd "<M-right>") 'windmove-right)
+(global-set-key (kbd "<C-down>") 'windmove-down)
+(global-set-key (kbd "<C-up>") 'windmove-up)
+(global-set-key (kbd "<C-left>") 'windmove-left)
+(global-set-key (kbd "<C-right>") 'windmove-right)
 
 ;;; Enable fullscreen mode with M-RET
 ;;; http://www.stratospark.com/blog/2010/fullscreen_emacs_on_osx.html
@@ -81,3 +81,12 @@
 
 ;; custom bindings
 (global-set-key (kbd "C-x l") 'linum-mode)
+(global-set-key (kbd "C-/") 'comment-region)
+(global-set-key (kbd "C-?") 'uncomment-region) ; C-S-/
+(global-set-key (kbd "C-/") 'comment-region)
+
+(global-set-key (kbd "<M-down>") 'forward-paragraph)
+(global-set-key (kbd "<M-up>") 'backward-paragraph)
+(global-set-key (kbd "<M-left>") 'backward-word)
+(global-set-key (kbd "<M-right>") 'forward-word)
+
