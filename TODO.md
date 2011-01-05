@@ -33,5 +33,7 @@ Python development environment:
     and his `.emacs` (saved under
     `others-dotemacs/pythonic-dotemacs`). Also read his comments. He
     also recommends `show-wspace.el`.
+  - make quotes non-italic
+  - make comments either non-italic or italic, but not a mix
 - later:
   - grep in project (use ACK)
