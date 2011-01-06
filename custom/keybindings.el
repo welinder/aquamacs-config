@@ -92,3 +92,5 @@
 
 (global-set-key (kbd "C-c s") 'query-replace)
 (global-set-key (kbd "C-c r") 'query-replace-regexp)
+
+(global-set-key (kbd "C-x m") 'multi-term-next)
