@@ -90,3 +90,5 @@
 (global-set-key (kbd "<M-left>") 'backward-word)
 (global-set-key (kbd "<M-right>") 'forward-word)
 
+(global-set-key (kbd "C-c s") 'query-replace)
+(global-set-key (kbd "C-c r") 'query-replace-regexp)

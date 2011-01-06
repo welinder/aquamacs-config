@@ -66,4 +66,10 @@
 (require 'autopair)
 (autopair-global-mode) ;; enable autopair in all buffers 
 
+;; dired settings
+(setq dired-dwim-target t) ; allow easier copy to other buffer
+;; allow dired to be able to delete or copy a whole dir.
+(setq dired-recursive-copies 'always)
+(setq dired-recursive-deletes 'top)
+
 (provide 'custom)
