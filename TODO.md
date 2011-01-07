@@ -37,3 +37,4 @@ Python development environment:
   - make comments either non-italic or italic, but not a mix
 - later:
   - grep in project (use ACK)
+  - tiny tools
