@@ -34,7 +34,7 @@
   "projects"
   "markdown-env"
   "lisp-env"
-  "org-mode-env"
+  "org-mode-env" ; after projects.el (needs anything.el)
   "python-env"
   "appearance" ; appearance least important, so load last
 ))

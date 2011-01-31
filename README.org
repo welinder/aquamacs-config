@@ -1,0 +1,33 @@
+* Aquamacs Emacs Configuration
+This is my Aquamacs Emacs configuration. Pieces are stolen and
+modified from all over, but some common sources are:
+- https://github.com/bashu/aquamacs-starter-kit
+- https://github.com/gregnewman/20seven-emacs
+
+* Installation Instructions
+1. Add the following to =/Library/Preferences/Aquamacs Emacs/Preferences.el=:
+#+BEGIN_SRC emacs-lisp
+        (setq config-files-dir (concat (file-name-directory
+          (or (buffer-file-name) load-file-name)) "/aquamacs-config"))
+        (add-to-list 'load-path config-files-dir)
+        (require 'init)
+#+END_SRC
+2. Make sure your Python configuration works by checking instructions
+   in =custom/python.el=.
+3. Unpack packages in =src/= to plugins:
+   - CEDET :: Set up your CEDET environment by extracting
+              =cedet-1.0.tar.gz= and =ecb-2.40.tar.gz= from =src/= in
+              the =plugins/= directory and follow the CEDET build
+              instructions in =custom/ecb.el=.
+  - auto-complete :: Extract =auto-complete-*.tar.gz= and byte-compile
+                     all =*.el= files in the directory.
+  - mmm-mode :: Extract =mmm-mode-0.4.8.tar.gz= and run =make= to
+                byte-compile.
+  - nxhtml :: Extract =nxhtml-2.08-100425.zip=.
+4. Install git submodules using the following commands:
+   - =git submodule init=
+   - =git submodule update=
+   Afterwards you will have to byte-compile the org-mode package.
+5. Install SLIME by using package on Aquamacs website
+6. (optional) Install aquamacs command line tools: 
+   =Tools -> Install Command Line Tools=.

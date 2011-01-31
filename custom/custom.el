@@ -64,12 +64,36 @@
 
 ;; better parentheses pairing
 (require 'autopair)
-(autopair-global-mode) ;; enable autopair in all buffers 
+;(autopair-global-mode) ;; enable autopair in all buffers 
 
 ;; dired settings
 (setq dired-dwim-target t) ; allow easier copy to other buffer
 ;; allow dired to be able to delete or copy a whole dir.
 (setq dired-recursive-copies 'always)
 (setq dired-recursive-deletes 'top)
+;; enable dired-x
+(require 'dired-x)
+;; setup wdired
+(require 'wdired)
+(setq wdired-allow-to-change-permissions 'advanced)
+(define-key dired-mode-map (kbd "r") 'wdired-change-to-wdired-mode)
+;; auto-revert dired buffer to be in sync w file sys
+;; http://nflath.com/2009/07/dired/
+(defadvice switch-to-buffer-other-window 
+  (after auto-refresh-dired (buffer &optional norecord) activate)
+  (if (equal major-mode 'dired-mode)
+      (revert-buffer)))
+(defadvice switch-to-buffer 
+  (after auto-refresh-dired (buffer &optional norecord) activate)
+  (if (equal major-mode 'dired-mode)
+      (revert-buffer)))
+(defadvice display-buffer 
+  (after auto-refresh-dired (buffer &optional not-this-window frame)  activate)
+  (if (equal major-mode 'dired-mode)
+      (revert-buffer)))
+(defadvice other-window 
+  (after auto-refresh-dired (arg &optional all-frame) activate)
+  (if (equal major-mode 'dired-mode)
+      (revert-buffer)))
 
 (provide 'custom)

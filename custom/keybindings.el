@@ -94,3 +94,7 @@
 (global-set-key (kbd "C-c r") 'query-replace-regexp)
 
 (global-set-key (kbd "C-x m") 'multi-term-next)
+
+(global-set-key (kbd "C-x m") 'multi-term-next)
+(define-key osx-key-mode-map (kbd "A-u") 'ido-switch-buffer)
+(define-key osx-key-mode-map (kbd "A-i") 'ibuffer)

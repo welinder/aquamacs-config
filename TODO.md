@@ -38,3 +38,15 @@ Python development environment:
 - later:
   - grep in project (use ACK)
   - tiny tools
+
+# org-mode #
+* maps :http://julien.danjou.info/software.html
+
+# Navigation and Project Management #
+* Bind some key as a navigation key, e.g. `C-N {nav}` so that we can
+  have quick ways of reaching partiuclar projects or functions.
+* For example, `nav=P` could give a list of all projects (active and
+  inactive)
+* `nav=V` could give options for version control, such as status
+* access window configuration etc
+* the navigation could be in a popup frame, or as an anything menu
