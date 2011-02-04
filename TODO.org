@@ -1,5 +1,5 @@
 
-Python development environment:
+* Python development environment
 - project files
   - fix ido-mode in find file in project
   - IDO: http://www.emacswiki.org/emacs/InteractivelyDoThings
@@ -38,15 +38,17 @@ Python development environment:
 - later:
   - grep in project (use ACK)
   - tiny tools
+* editing
+- [[http://ignaciopp.wordpress.com/2009/06/17/emacs-indentunindent-region-as-a-block-using-the-tab-key/][fix indention]] blog entry
 
-# org-mode #
-* maps :http://julien.danjou.info/software.html
+* org-mode *
+- maps :http://julien.danjou.info/software.html
 
 # Navigation and Project Management #
-* Bind some key as a navigation key, e.g. `C-N {nav}` so that we can
+- Bind some key as a navigation key, e.g. `C-N {nav}` so that we can
   have quick ways of reaching partiuclar projects or functions.
-* For example, `nav=P` could give a list of all projects (active and
+- For example, `nav=P` could give a list of all projects (active and
   inactive)
-* `nav=V` could give options for version control, such as status
-* access window configuration etc
-* the navigation could be in a popup frame, or as an anything menu
+- `nav=V` could give options for version control, such as status
+- access window configuration etc
+- the navigation could be in a popup frame, or as an anything menu
