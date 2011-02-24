@@ -1,3 +1,16 @@
+* Tasks
+- master search and search/replace regex
+- indent and comment region
+- fill-column on paragraph (and don't break in links)
+- get cmd-T working (for project)
+- signal things outside fill column
+- org mode
+  - ido-mode working on all org-files
+- php/html/javascript modes working
+- rails/html modes working
+- master ecb speedbar for project
+- master git and svn tools
+- regorganize todo list below
 
 * Python development environment
 - project files
