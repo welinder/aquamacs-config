@@ -2,6 +2,11 @@
 ;; See installation instructions below
 ;; 1. Install Pymacs
 ;; 2. Install ropemacs
+
+;;; Custom keyboard shortcuts
+(define-key osx-key-mode-map (kbd "A-]") 'py-shift-region-right)
+(define-key osx-key-mode-map (kbd "A-[") 'py-shift-region-left)
+
 (require 'python)
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
 (add-to-list 'interpreter-mode-alist '("python" . python-mode))
@@ -29,46 +34,6 @@
   (let (parens-require-spaces)
     (insert-pair)))
 
-;;; IPython Integration
-;; nicer access to command history (must be defined before ipython)
-;; (require 'comint)
-;; (define-key comint-mode-map (kbd "M-p") 'comint-previous-matching-input-from-input)
-;; (define-key comint-mode-map (kbd "M-n") 'comint-next-matching-input-from-input)
-;; (define-key comint-mode-map (kbd "C-M-p") 'comint-next-input)
-;; (define-key comint-mode-map (kbd "C-M-p") 'comint-previous-input)
-; More about getting EDITOR to work here:http://ipython.scipy.org/doc/manual/html/config/editors.html
-(setq ipython-command 
-  "/Library/Frameworks/EPD64.framework/Versions/Current/bin/ipython")
-(require 'ipython)
-(setq py-python-command-args '( "-pdb" ))
-;; TODO: the following doesn't work...?
-(defadvice py-execute-buffer (around python-keep-focus activate)
-  "return focus to python code buffer"
-  (save-excursion ad-do-it))
-;; make up and down arrows work in the interpreter buffer
-(add-hook 'py-shell-hook
-          (lambda ()
-            (local-set-key (kbd "<up>") 'comint-previous-matching-input-from-input)
-            (local-set-key (kbd "<down>") 'comint-next-matching-input-from-input)))
-;; anything-ipython for better completion
-
-; TODO: anything has moved to projects.el
-;(require 'anything)
-;(require 'anything-ipython)
-;(add-hook 'python-mode-hook #'(lambda ()
-;  (define-key python-mode-map (kbd "M-<tab>") 'anything-ipython-complete)))
-;(add-hook 'ipython-shell-hook #'(lambda ()
-;  (define-key python-mode-map (kbd "M-<tab>") 'anything-ipython-complete)))
-  
-;; rlcompleter2 is a nice completer: http://codespeak.net/rlcompleter2/
-;; to get it to work, do `easy_install rlcompleter2` then add the following
-;; to your `~/.ipython/ipy_user_conf.py`
-;;   import rlcompleter2
-;;   rlcompleter2.setup()
-;; (when (require 'anything-show-completion nil t)
-;;   (use-anything-show-completion 'anything-ipython-complete
-;;                                 '(length pattern)))
-
 ;;; Pymacs python integration
 ;; Read more here: http://pymacs.progiciels-bpi.ca/pymacs.html
 ;; Pymacs Installation Guide
@@ -84,6 +49,10 @@
 ;;    If it doesn't, you may have to set your `PATH` correctly for 
 ;;    non-terminal shells (`.bashrc` or `.zshenv` depending on shell).
 ;; 8. Make sure pymacs works from emacs: e.g. `M-x pymacs-eval 2**3` should give you 8.
+;;
+;; Troubleshooting:
+;; - check the error message in the Pymacs buffer
+;; - make sure you have Pymacs in your PYTHON_PATH
 
 (autoload 'pymacs-apply "pymacs")
 (autoload 'pymacs-call "pymacs")
@@ -116,3 +85,42 @@
   (add-to-list 'flymake-allowed-file-name-masks 
                '("\\.py\\'" flymake-pyflakes-init))) 
 (add-hook 'find-file-hook 'flymake-find-file-hook)
+
+;;; IPython Integration
+;; nicer access to command history (must be defined before ipython)
+;; (require 'comint)
+;; (define-key comint-mode-map (kbd "M-p") 'comint-previous-matching-input-from-input)
+;; (define-key comint-mode-map (kbd "M-n") 'comint-next-matching-input-from-input)
+;; (define-key comint-mode-map (kbd "C-M-p") 'comint-next-input)
+;; (define-key comint-mode-map (kbd "C-M-p") 'comint-previous-input)
+; More about getting EDITOR to work here:http://ipython.scipy.org/doc/manual/html/config/editors.html
+(setq ipython-command "/usr/local/Cellar/python/2.7/bin/ipython")
+(require 'ipython)
+(setq py-python-command-args '( "-pdb" "-colors" "Linux"))
+;; TODO: the following doesn't work...?
+(defadvice py-execute-buffer (around python-keep-focus activate)
+  "return focus to python code buffer"
+  (save-excursion ad-do-it))
+;; make up and down arrows work in the interpreter buffer
+(add-hook 'py-shell-hook
+          (lambda ()
+            (local-set-key (kbd "<up>") 'comint-previous-matching-input-from-input)
+            (local-set-key (kbd "<down>") 'comint-next-matching-input-from-input)))
+;; anything-ipython for better completion
+
+; TODO: anything has moved to projects.el
+;(require 'anything)
+;(require 'anything-ipython)
+;(add-hook 'python-mode-hook #'(lambda ()
+;  (define-key python-mode-map (kbd "M-<tab>") 'anything-ipython-complete)))
+;(add-hook 'ipython-shell-hook #'(lambda ()
+;  (define-key python-mode-map (kbd "M-<tab>") 'anything-ipython-complete)))
+  
+;; rlcompleter2 is a nice completer: http://codespeak.net/rlcompleter2/
+;; to get it to work, do `easy_install rlcompleter2` then add the following
+;; to your `~/.ipython/ipy_user_conf.py`
+;;   import rlcompleter2
+;;   rlcompleter2.setup()
+;; (when (require 'anything-show-completion nil t)
+;;   (use-anything-show-completion 'anything-ipython-complete
+;;                                 '(length pattern)))
