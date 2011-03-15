@@ -67,7 +67,7 @@
 ;;; Ropemacs
 ;; Installation: 
 ;; 1. Install rope: `pip install rope`
-;; 2. Run `python setup.py install` from the archive in src/
+;; 2. Run `python setup.py install` from the archive in aquamacs-config/src/
 (pymacs-load "ropemacs" "rope-")
 ;(setq ropemacs-enable-autoimport t) ; far too slow
 
@@ -94,7 +94,7 @@
 ;; (define-key comint-mode-map (kbd "C-M-p") 'comint-next-input)
 ;; (define-key comint-mode-map (kbd "C-M-p") 'comint-previous-input)
 ; More about getting EDITOR to work here:http://ipython.scipy.org/doc/manual/html/config/editors.html
-(setq ipython-command "/usr/local/Cellar/python/2.7/bin/ipython")
+(setq ipython-command (getenv "IPYTHONCMD"))
 (require 'ipython)
 (setq py-python-command-args '( "-pdb" "-colors" "Linux"))
 ;; TODO: the following doesn't work...?
