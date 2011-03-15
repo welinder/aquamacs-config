@@ -1,12 +1,12 @@
 * Tasks
-- test org-mode html export and write blogs about all this
-- master search and search/replace regex
-- indent and comment region
-- fill-column on paragraph (and don't break in links)
 - get cmd-T working (for project)
 - master grep
   - grep in project files
   - grep in folders in dir (include/exclude endings)
+- test org-mode html export and write blogs about all this
+- master search and search/replace regex
+- indent and comment region
+- fill-column on paragraph (and don't break in links)
 - switch project
 - signal things outside fill column
 - master navigation
@@ -61,6 +61,8 @@
 - later:
   - grep in project (use ACK)
   - tiny tools
+- https://github.com/gabrielelanaro/emacs-for-python
+- http://stackoverflow.com/questions/3821639/key-bindings-or-workflow-suggestions-for-managing-breakpoints-with-pydbgr-in-emac
 * editing
 - [[http://ignaciopp.wordpress.com/2009/06/17/emacs-indentunindent-region-as-a-block-using-the-tab-key/][fix indention]] blog entry
 

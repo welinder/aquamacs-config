@@ -1,5 +1,9 @@
 ;; Project Management
 
+;; unique buffer names
+(require 'uniquify)
+(setq uniquify-buffer-name-style "post-forward")
+
 ;;;-------------------------------------------------------------------------
 ;;; eproject project management
 ;;;-------------------------------------------------------------------------
@@ -12,8 +16,15 @@
 (global-set-key (kbd "C-x p k") 'eproject-kill-project-buffers)
 (global-set-key (kbd "C-x p v") 'eproject-revisit-project)
 (global-set-key (kbd "C-x p b") 'eproject-ibuffer)
-(global-set-key (kbd "C-x p f") 'eproject-find-file)
+(global-set-key (kbd "C-c C-f") 'eproject-find-file)
 
+;;; Modify the generic project
+(define-project-type generic () nil
+  :relevant-files (".*")
+  :irrelevant-files ("^[.]" "^[#]" "\\.\\(png\\|gif\\)")
+  :file-name-map (lambda (root) (lambda (root file) file))
+  :local-variables (lambda (root) (lambda (root file) nil))
+  :config-file ".eproject")
 
 ;;;-------------------------------------------------------------------------
 ;;; ido-mode for navigating projects
@@ -23,6 +34,8 @@
 (setq ido-everywhere t)
 (setq ido-use-filename-at-point 'guess)
 (ido-mode 1)
+;; set up ignored files
+(add-to-list 'ido-ignore-files "\\`\\.DS_Store")
 
 ;;;-------------------------------------------------------------------------
 ;;; anything.el setup
@@ -69,6 +82,7 @@
 	      anything-c-source-recentf
 	      )))
 
+(define-key osx-key-mode-map (kbd "A-t") 'anything-for-files)
 ;;;-------------------------------------------------------------------------
 ;;; window setup
 ;;;-------------------------------------------------------------------------

@@ -27,7 +27,6 @@
   "custom"
   "keybindings"
   "yasnippet"
-  "ido"
   "ecb"
   "multi-term"
   "version-control"
