@@ -19,6 +19,12 @@
 ;; get rid of yes-or-no questions - y or n is enough
 (defalias 'yes-or-no-p 'y-or-n-p)
 
+;; show trailing whitespace in red
+;; TODO: make sure this is global (maybe through custom)
+(setq show-trailing-whitespace t)
+(require 'whitespace)
+;(global-whitespace-mode 0) ; TODO: customize this
+
 ;; indent whole buffer: http://emacsblog.org/2007/01/17/indent-whole-buffer/
 (defun indent-whole-buffer ()
   "indent whole buffer"
@@ -64,7 +70,7 @@
 
 ;; better parentheses pairing
 (require 'autopair)
-;(autopair-global-mode) ;; enable autopair in all buffers 
+;(autopair-global-mode) ;; enable autopair in all buffers
 
 ;; dired settings
 (setq dired-dwim-target t) ; allow easier copy to other buffer

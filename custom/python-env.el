@@ -96,7 +96,8 @@
 ; More about getting EDITOR to work here:http://ipython.scipy.org/doc/manual/html/config/editors.html
 (setq ipython-command (getenv "IPYTHONCMD"))
 (require 'ipython)
-(setq py-python-command-args '( "-pdb" "-colors" "Linux"))
+(setq py-python-command-args '( "--pdb" "--colors" "Linux"))
+
 ;; TODO: the following doesn't work...?
 (defadvice py-execute-buffer (around python-keep-focus activate)
   "return focus to python code buffer"
