@@ -1,7 +1,7 @@
 ;;; Main Usability Settings
 
 ;; Indention
-(setq-default tab-width 2) ; default tab width
+(setq-default tab-width 4) ; default tab width
 (setq-default indent-tabs-mode nil) ; replaces tabs with spaces
 
 ;; show paired parenthasis
