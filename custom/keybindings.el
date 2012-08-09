@@ -47,10 +47,10 @@
 (global-set-key (kbd "M-H") (lambda () (interactive) (enlarge-window -1 t)))
 (global-set-key (kbd "M-L") (lambda () (interactive) (enlarge-window 1 t)))
 
-(global-set-key (kbd "<C-down>") 'windmove-down)
-(global-set-key (kbd "<C-up>") 'windmove-up)
-(global-set-key (kbd "<C-left>") 'windmove-left)
-(global-set-key (kbd "<C-right>") 'windmove-right)
+(global-set-key (kbd "<A-down>") 'windmove-down)
+(global-set-key (kbd "<A-up>") 'windmove-up)
+(global-set-key (kbd "<A-left>") 'windmove-left)
+(global-set-key (kbd "<A-right>") 'windmove-right)
 
 ;;; Enable fullscreen mode with M-RET
 ;;; http://www.stratospark.com/blog/2010/fullscreen_emacs_on_osx.html
