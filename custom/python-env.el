@@ -125,3 +125,6 @@
 ;; (when (require 'anything-show-completion nil t)
 ;;   (use-anything-show-completion 'anything-ipython-complete
 ;;                                 '(length pattern)))
+
+;; Cython
+(require 'cython-mode)
